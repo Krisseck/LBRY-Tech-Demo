@@ -5,8 +5,12 @@ import App from './App'
 import router from './router'
 import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.min.css'
+import VueResource from 'vue-resource'
+import VueHighlightJS from 'vue-highlightjs'
 
 Vue.use(Vuetify)
+Vue.use(VueResource)
+Vue.use(VueHighlightJS)
 
 Vue.config.productionTip = false
 
