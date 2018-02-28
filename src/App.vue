@@ -3,7 +3,7 @@
     <v-container grid-list-md text-xs-center>
       <v-layout row wrap id="navigation">
         <v-flex xs4>
-          <router-link to="/step-1">
+          <router-link exact to="/">
             <v-btn color="grey" fab>1</v-btn>
             Resolve a claim
           </router-link>
