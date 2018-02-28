@@ -12,7 +12,7 @@
         <v-btn color="primary" v-on:click="fetchMetadata">Execute</v-btn>
       </v-flex>
       <v-flex xs12 v-if="isLoading">
-        <p class="subheading">Loading...</p>
+        <v-progress-circular indeterminate color="primary"></v-progress-circular>
       </v-flex>
       <v-flex xs12 v-if="jsonData">
         <pre v-highlightjs="jsonData" class="json-example"><code class="json"></code></pre>
