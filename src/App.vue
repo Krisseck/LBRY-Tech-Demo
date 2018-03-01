@@ -11,7 +11,7 @@
         <v-flex xs4>
           <router-link to="/step-2">
             <v-btn color="grey" fab>2</v-btn>
-            Download a stream
+            Publish content
           </router-link>
         </v-flex>
         <v-flex xs4>
@@ -41,13 +41,15 @@ export default {
 @import 'scss/variables';
 
 #app {
-  background: #F5F5CC;
+  background: lighten(desaturate($primary-color,30%), 50%);
+  color: $text-color;
 }
 
 #navigation {
   a {
     text-decoration: none;
     color: $text-color;
+    font-weight: bold;
   }
   .router-link-active {
     .btn {

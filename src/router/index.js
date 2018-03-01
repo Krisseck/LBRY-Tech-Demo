@@ -14,11 +14,6 @@ export default new Router({
       component: Step1
     },
     {
-      path: '/step-1',
-      name: 'Step1',
-      component: Step1
-    },
-    {
       path: '/step-2',
       name: 'Step2',
       component: Step2
