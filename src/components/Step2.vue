@@ -1,6 +1,6 @@
 <template>
   <v-container fluid id="step2-page">
-    <v-layout row wrap>
+    <v-layout row wrap v-images-loaded="imagesLoaded">
       <v-flex xs12>
         <h1 class="display-2">Publish your content on the blockchain</h1>
         <p class="subheading">Upload an image to the blockchain and you are able to view it on the <a href='http://explorer.lbry.io' target='_blank'>LBRY Blockchain Explorer</a>.</p>
@@ -13,14 +13,14 @@
       </v-flex>
       <v-flex xs4>
         <v-card class="pa-3">
-          <v-form ref="form" v-model="valid">
-            <v-text-field v-model="topLine" dark solo required></v-text-field>
-            <v-text-field v-model="bottomLine" dark solo required></v-text-field>
-            <v-text-field v-model="title" label="Title" required></v-text-field>
-            <v-text-field v-model="description" label="Description" required></v-text-field>
-            <v-text-field v-model="author" label="Author" required></v-text-field>
-            <v-text-field v-model="language" label="Language" required></v-text-field>
-            <v-text-field v-model="license" label="License" required></v-text-field>
+          <v-form ref="form" v-model="valid" lazy-validation>
+            <v-text-field v-model="topLine" dark solo :rules="textFieldRules" required></v-text-field>
+            <v-text-field v-model="bottomLine" dark solo :rules="textFieldRules" required></v-text-field>
+            <v-text-field v-model="title" label="Title" :rules="textFieldRules" required></v-text-field>
+            <v-text-field v-model="description" label="Description" :rules="textFieldRules" required></v-text-field>
+            <v-text-field v-model="author" label="Author" :rules="textFieldRules" required></v-text-field>
+            <v-text-field v-model="language" label="Language" :rules="textFieldRules" required></v-text-field>
+            <v-text-field v-model="license" label="License" :rules="textFieldRules" required></v-text-field>
             <v-checkbox label="NSFW" v-model="nsfw"></v-checkbox>
             <v-btn v-on:click="submit" :disabled="!valid">Submit</v-btn>
           </v-form>
@@ -34,7 +34,12 @@
 </template>
 
 <script>
+import imagesLoaded from 'vue-images-loaded'
+
 export default {
+  directives: {
+    imagesLoaded
+  },
   data () {
     return {
       valid: false,
@@ -46,7 +51,10 @@ export default {
       author: '',
       language: 'EN',
       license: 'Public Domain',
-      nsfw: false
+      nsfw: false,
+      textFieldRules: [
+        v => !!v || 'Field is required'
+      ],
     }
   },
   methods: {
@@ -74,6 +82,17 @@ export default {
       ctx.strokeText(this.bottomLine.toUpperCase(), canvasWidth / 2, (canvasHeight - 40));
       ctx.fillText(this.bottomLine.toUpperCase(), canvasWidth / 2, (canvasHeight - 40));
     },
+    submit () {
+      // Do something
+    },
+    imagesLoaded (instance) {
+      var component = this;
+      // Make sure the font is loaded
+      document.fonts.load('bold 28px Coda').then(function() {
+        console.log('coda font should be loaded');
+        component.updateCanvas();
+      });
+    }
   },
   watch: {
     topLine () {
@@ -82,9 +101,6 @@ export default {
     bottomLine () {
       this.updateCanvas();
     }
-  },
-  mounted () {
-    this.updateCanvas();
   },
   name: 'Step2'
 }

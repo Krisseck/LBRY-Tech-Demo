@@ -49,9 +49,9 @@ export default {
   a {
     text-decoration: none;
     color: $text-color;
-    font-weight: bold;
   }
   .router-link-active {
+    font-weight: bold;
     .btn {
       background: $primary-color !important;
       color: white !important;
