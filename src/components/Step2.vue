@@ -10,6 +10,20 @@
         <canvas id="meme-canvas" width="400" height="300">
           Sorry, canvas not supported
         </canvas>
+        <v-flex xs6 offset-xs3>
+          <v-card class="pa-3">
+            <p class="subheading">Upload a background image</p>
+            <image-uploader
+              :quality="0.8"
+              :autoRotate=true
+              :maxWidth="400"
+              outputFormat="string"
+              :preview=false
+              @input="setImage"
+              @onComplete="imageUploaded"
+            ></image-uploader>
+          </v-card>
+        </v-flex>
       </v-flex>
       <v-flex xs4>
         <v-card class="pa-3">
@@ -35,10 +49,16 @@
 
 <script>
 import imagesLoaded from 'vue-images-loaded'
+import { ImageUploader } from 'vue-image-upload-resize'
+
+import EventBus from '../event-bus';
 
 export default {
   directives: {
     imagesLoaded
+  },
+  components: {
+    ImageUploader
   },
   data () {
     return {
@@ -52,6 +72,7 @@ export default {
       language: 'EN',
       license: 'Public Domain',
       nsfw: false,
+      backgroundImage: '',
       textFieldRules: [
         v => !!v || 'Field is required'
       ],
@@ -83,16 +104,26 @@ export default {
       ctx.fillText(this.bottomLine.toUpperCase(), canvasWidth / 2, (canvasHeight - 40));
     },
     submit () {
-      // Do something
+      // TODO: Do the upload
+      EventBus.$emit('file-uploaded', 'txhashhere');
     },
     imagesLoaded (instance) {
       var component = this;
       // Make sure the font is loaded
       document.fonts.load('bold 28px Coda').then(function() {
-        console.log('coda font should be loaded');
         component.updateCanvas();
       });
+    },
+    setImage (file) {
+      var component = this;
+      document.getElementById('base-image').src = file;
+      // allow one second to load the image
+      setTimeout(component.updateCanvas, 1000);
+    },
+    imageUploaded () {
     }
+  },
+  created () {
   },
   watch: {
     topLine () {
@@ -128,6 +159,9 @@ export default {
     }
     .input-group--text-field {
       margin-bottom: 0.5rem;
+    }
+    #fileInput {
+      width: 100%;
     }
   }
 

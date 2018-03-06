@@ -9,15 +9,20 @@
         <v-text-field v-model="address" solo dark prefix="lbry://"></v-text-field>
       </v-flex>
       <v-flex xs2>
-        <v-btn large v-on:click="fetchMetadata">Execute</v-btn>
+        <v-btn large v-on:click="fetchMetadata" class="mt-0">Execute</v-btn>
+      </v-flex>
+      <v-flex xs12 v-if="exampleCode != ''">
+        <pre v-highlightjs="exampleCode"><code class="bash"></code></pre>
       </v-flex>
       <v-flex xs12 v-if="isLoading">
         <v-progress-circular indeterminate color="primary"></v-progress-circular>
       </v-flex>
       <v-flex xs12 v-if="jsonData">
+        <p class="subheading">Success! Here is the response for <strong>lbry://{{ address }}</strong>:</p>
         <pre v-highlightjs="jsonData" class="json-example"><code class="json"></code></pre>
+        <v-btn large v-on:click="$router.push('step-2')" class="mt-3">Go to next step</v-btn>
       </v-flex>
-      <template v-if="!isLoading">
+      <template v-if="!isLoading && !jsonData">
         <v-flex xs12>
           <p class="subheading">... or select a live example from below</p>
         </v-flex>
@@ -80,7 +85,8 @@ export default {
     return {
       address: 'Claim goes here',
       jsonData: '',
-      isLoading: false
+      isLoading: false,
+      exampleCode: ''
     }
   },
   methods: {
@@ -88,6 +94,7 @@ export default {
       var component = this;
       component.jsonData = '';
       component.isLoading = true;
+      component.exampleCode = "# Example code using the daemon\ncurl 'http://localhost:5279' --data '{\"method\":\"resolve\",\"params\":{\"uri\":\"" + this.address + "\"}}'";
       this.$http.get('http://daemon.lbry.tech/?method=resolve&uri=' + this.address).then(function(response) {
         component.isLoading = false;
         component.jsonData = JSON.stringify(response.body, null, '  ');
@@ -109,13 +116,7 @@ export default {
 
   @import '../../node_modules/highlight.js/styles/monokai-sublime';
 
-  
-
   #step1-page {
-    .json-example {
-      text-align: left;
-      overflow-x: scroll;
-    }
     .card {
       .card__title {
         height: 9rem;
@@ -133,7 +134,6 @@ export default {
       background-color: $primary-color;
       border-color: $primary-color;
       color: white;
-      margin-top: 0;
     }
   }
 
