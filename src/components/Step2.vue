@@ -139,31 +139,25 @@ export default {
 
 <style lang="scss">
 
-  @import '../scss/variables';
+@import '../scss/variables';
 
-  @import '../../node_modules/highlight.js/styles/monokai-sublime';
-
-  #step2-page {
-    .json-example {
-      text-align: left;
-      overflow-x: scroll;
-    }
-    #meme-canvas {
-      width: 400px;
-      height: 300px;
-    }
-    #base-image {
-      left: -10000px;
-      top: -10000px;
-      position: absolute;
-    }
-    .input-group--text-field {
-      margin-bottom: 0.5rem;
-    }
-    #fileInput {
-      width: 100%;
-    }
+#step2-page {
+  #meme-canvas {
+    width: 400px;
+    height: 300px;
   }
+  #base-image {
+    left: -10000px;
+    top: -10000px;
+    position: absolute;
+  }
+  .input-group--text-field {
+    margin-bottom: 0.5rem;
+  }
+  #fileInput {
+    width: 100%;
+  }
+}
 
 
 </style>

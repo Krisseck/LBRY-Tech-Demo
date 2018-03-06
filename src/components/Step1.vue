@@ -112,30 +112,28 @@ export default {
 
 <style lang="scss">
 
-  @import '../scss/variables';
+@import '../scss/variables';
 
-  @import '../../node_modules/highlight.js/styles/monokai-sublime';
-
-  #step1-page {
-    .card {
-      .card__title {
-        height: 9rem;
-        h4 {
-          text-align: left;
-          font-size: 1.2rem;
-        }
-        .account {
-          color: $primary-color;
-          text-align: left;
-        }
+#step1-page {
+  .card {
+    .card__title {
+      height: 9rem;
+      h4 {
+        text-align: left;
+        font-size: 1.2rem;
+      }
+      .account {
+        color: $primary-color;
+        text-align: left;
       }
     }
-    .btn {
-      background-color: $primary-color;
-      border-color: $primary-color;
-      color: white;
-    }
   }
+  .btn {
+    background-color: $primary-color;
+    border-color: $primary-color;
+    color: white;
+  }
+}
 
 
 </style>

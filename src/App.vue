@@ -79,14 +79,16 @@ export default {
 
 @import 'scss/variables';
 
+@import '../node_modules/highlight.js/styles/monokai-sublime';
+
 pre {
   text-align: left;
   overflow-x: auto;
 }
 
 .dialog__content {
-  align-items: flex-end;
-  justify-content: right;
+  align-items: flex-end !important;
+  justify-content: right !important;
 }
 
 #app {
