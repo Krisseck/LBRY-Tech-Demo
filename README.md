@@ -1,6 +1,13 @@
-# lbry-tech
+# LBRY Tech Demo
 
-> A Vue.js project
+An interactive demonstration website on how to use [the LBRY protocol](https://lbry.io/).
+
+Built with:
+
+* [Vue.js](https://vuejs.org/)
+* [Vue Webpack Boilerplate](https://github.com/vuejs-templates/webpack)
+* [Vuetify](https://vuetifyjs.com/)
+* [Highlight.js](https://highlightjs.org/)
 
 ## Build Setup
 
@@ -17,5 +24,3 @@ npm run build
 # build for production and view the bundle analyzer report
 npm run build --report
 ```
-
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
