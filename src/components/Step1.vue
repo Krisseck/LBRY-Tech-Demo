@@ -5,10 +5,10 @@
         <h1 class="display-2">Learn the LBRY protocol by examples</h1>
         <p class="subheading">Let's start by getting the associated metadata for <a href="#">a claim</a>.</p>
       </v-flex>
-      <v-flex xs10>
+      <v-flex xs12 sm10>
         <v-text-field v-model="address" solo dark prefix="lbry://"></v-text-field>
       </v-flex>
-      <v-flex xs2>
+      <v-flex xs12 sm2>
         <v-btn large v-on:click="fetchMetadata" class="mt-0">Execute</v-btn>
       </v-flex>
       <v-flex xs12 v-if="exampleCode != ''">
@@ -26,7 +26,7 @@
         <v-flex xs12>
           <p class="subheading">... or select a live example from below</p>
         </v-flex>
-        <v-flex xs3>
+        <v-flex xs12 sm3>
           <v-card hover>
             <v-card-media src="static/itsadisaster.jpg" height="200px" v-on:click="chooseClaim('itsadisaster')">
             </v-card-media>
@@ -38,7 +38,7 @@
             </v-card-title>
           </v-card>
         </v-flex>
-        <v-flex xs3>
+        <v-flex xs12 sm3>
           <v-card hover>
             <v-card-media src="static/unbubbled.png" height="200px" v-on:click="chooseClaim('unbubbled1-1')">
             </v-card-media>
@@ -50,7 +50,7 @@
             </v-card-title>
           </v-card>
         </v-flex>
-        <v-flex xs3>
+        <v-flex xs12 sm3>
           <v-card hover>
             <v-card-media src="static/fortnite.jpg" height="200px" v-on:click="chooseClaim('fortnite-top-stream-moments-nickatnyte')">
             </v-card-media>
@@ -62,7 +62,7 @@
             </v-card-title>
           </v-card>
         </v-flex>
-        <v-flex xs3>
+        <v-flex xs12 sm3>
           <v-card hover>
             <v-card-media src="static/lbrymine.png" height="200px" v-on:click="chooseClaim('six')">
             </v-card-media>

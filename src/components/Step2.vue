@@ -5,12 +5,12 @@
         <h1 class="display-2">Publish your content on the blockchain</h1>
         <p class="subheading">Upload an image to the blockchain and you are able to view it on the <a href='http://explorer.lbry.io' target='_blank'>LBRY Blockchain Explorer</a>.</p>
       </v-flex>
-      <v-flex xs8>
+      <v-flex xs12 sm8>
         <img src="static/lbry-green.png" id="base-image">
         <canvas id="meme-canvas" width="400" height="300">
           Sorry, canvas not supported
         </canvas>
-        <v-flex xs6 offset-xs3>
+        <v-flex xs12 sm6 class="mx-auto">
           <v-card class="pa-3">
             <p class="subheading">Upload a background image</p>
             <image-uploader
@@ -25,7 +25,7 @@
           </v-card>
         </v-flex>
       </v-flex>
-      <v-flex xs4>
+      <v-flex xs12 sm4>
         <v-card class="pa-3">
           <v-form ref="form" v-model="valid" lazy-validation>
             <v-text-field v-model="topLine" dark solo :rules="textFieldRules" required></v-text-field>
